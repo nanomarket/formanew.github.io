@@ -166,8 +166,8 @@
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.9.1/tsparticles.bundle.min.js"></script>
 
   <script>
-    // Initialize tsParticles once the bundle is loaded
-    window.addEventListener("DOMContentLoaded", async () => {
+    // Initialize tsParticles immediately after the library loads
+    (async () => {
       // tsParticles global is provided by the CDN bundle
       await tsParticles.load({
         id: "tsparticles",
@@ -214,7 +214,7 @@
         const container = tsParticles.domItem(0);
         if (container) container.pause();
       }
-    });
+    })();
   </script>
 </body>
 </html>
