@@ -8,8 +8,6 @@
   <!-- Roboto Mono (Google Fonts) -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Docs: particles.js.org & jsDelivr package page -->
-  <!-- https://particles.js.org/docs/ • https://www.jsdelivr.com/package/npm/tsparticles -->
 
   <style>
     :root{
@@ -32,11 +30,149 @@
       overflow:hidden;
     }
 
-    /* Removed subtle animated gradient drift (body::before and @keyframes drift) */
+    /* animated geometric background */
+    .bg{
+      position:fixed;
+      inset:0;
+      z-index:0;
+      overflow:hidden;
+      background: var(--bg-0);
+    }
 
-    /* full-screen particles canvas sits behind content */
-    #tsparticles{
-      position:fixed; inset:0; z-index:0;
+    .bg::before{
+      content:"";
+      position:absolute;
+      inset:-40vmax;
+      pointer-events:none;
+      transform-origin:50% 50%;
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNjAnIGhlaWdodD0nMTYwJyB2aWV3Qm94PScwIDAgMTYwIDE2MCc+PHJlY3Qgd2lkdGg9JzE2MCcgaGVpZ2h0PScxNjAnIGZpbGw9J25vbmUnLz48cGF0aCBkPSdNMCAwaDE2MHYxNjBIMHonIGZpbGw9J25vbmUnIHN0cm9rZT0nIzAwZmZmZicgc3Ryb2tlLW9wYWNpdHk9Jy4yNScgc3Ryb2tlLXdpZHRoPScyJy8+PHBhdGggZD0nTTAgODBoMTYwTTgwIDB2MTYwJyBzdHJva2U9JyMwMGZmZmYnIHN0cm9rZS1vcGFjaXR5PScuMTgnIHN0cm9rZS13aWR0aD0nMS41Jy8+PHBhdGggZD0nTTAgMGwxNjAgMTYwTTE2MCAwTDAgMTYwJyBzdHJva2U9JyNmZjNjZDInIHN0cm9rZS1vcGFjaXR5PScuMicgc3Ryb2tlLXdpZHRoPScxLjUnLz48L3N2Zz4=");
+      background-size: 160px 160px;
+      background-repeat: repeat;
+      opacity:.32;
+      animation:gridDrift 96s linear infinite;
+    }
+
+    .bg::after{
+      content:"";
+      position:absolute;
+      top:50%;
+      left:50%;
+      width:8px;
+      height:8px;
+      background-color: rgba(0,255,255,.55);
+      transform: translate(-50%, -50%);
+      box-shadow:
+        -320px -220px 0 0 rgba(0,255,255,.45),
+        -160px -60px 0 0 rgba(0,255,255,.32),
+        120px -140px 0 0 rgba(255,60,210,.42),
+        280px -20px 0 0 rgba(0,255,255,.38),
+        -260px 180px 0 0 rgba(255,60,210,.4),
+        -20px 220px 0 0 rgba(0,255,255,.34),
+        200px 200px 0 0 rgba(255,60,210,.36),
+        360px 60px 0 0 rgba(0,255,255,.3);
+      opacity:.55;
+      animation: nodeDrift 80s linear infinite;
+    }
+
+    .bg .slice{
+      position:absolute;
+      width: 120vmax;
+      height: 120vmax;
+      top:50%;
+      left:50%;
+      transform-origin:50% 50%;
+      clip-path: polygon(50% 5%, 87% 27%, 95% 63%, 50% 95%, 13% 73%, 5% 37%);
+      background-color: rgba(0,255,255,.32);
+      opacity:0;
+      transform: translate(-50%, -50%);
+      will-change: transform, clip-path, opacity;
+    }
+
+    .bg .slice::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      clip-path: inherit;
+      border: 1px solid rgba(0,255,255,.7);
+      mix-blend-mode:screen;
+    }
+
+    .slice-a{ animation:sliceA 90s linear infinite; }
+    .slice-b{ animation:sliceB 110s linear infinite reverse; }
+
+    .slice-b{
+      background-color: rgba(255,60,210,.28);
+    }
+
+    .slice-b::before{
+      border-color: rgba(255,60,210,.65);
+    }
+
+    @keyframes gridDrift{
+      0%{ background-position: 0 0; }
+      100%{ background-position: 160px 160px; }
+    }
+
+    @keyframes nodeDrift{
+      0%{ transform: translate(-50%, -50%) rotate(0deg); }
+      50%{ transform: translate(-50%, -50%) rotate(6deg); }
+      100%{ transform: translate(-50%, -50%) rotate(12deg); }
+    }
+
+    @keyframes sliceA{
+      0%{
+        opacity:0;
+        transform: translate(-50%, -50%) rotate(0deg) scale(.35);
+        clip-path: polygon(50% 5%, 87% 27%, 95% 63%, 50% 95%, 13% 73%, 5% 37%);
+      }
+      12%{ opacity:.9; }
+      33%{
+        transform: translate(-50%, -50%) rotate(120deg) scale(.48);
+        clip-path: polygon(48% 7%, 82% 18%, 96% 48%, 76% 88%, 32% 92%, 10% 58%);
+      }
+      66%{
+        transform: translate(-50%, -50%) rotate(240deg) scale(.56);
+        clip-path: polygon(54% 10%, 90% 34%, 88% 78%, 46% 92%, 14% 72%, 12% 30%);
+      }
+      88%{ opacity:.9; }
+      100%{
+        opacity:0;
+        transform: translate(-50%, -50%) rotate(360deg) scale(.35);
+        clip-path: polygon(50% 5%, 87% 27%, 95% 63%, 50% 95%, 13% 73%, 5% 37%);
+      }
+    }
+
+    @keyframes sliceB{
+      0%{
+        opacity:0;
+        transform: translate(-50%, -50%) rotate(-30deg) scale(.28);
+        clip-path: polygon(52% 4%, 92% 22%, 100% 60%, 70% 94%, 28% 86%, 6% 48%);
+      }
+      15%{ opacity:.85; }
+      40%{
+        transform: translate(-50%, -50%) rotate(90deg) scale(.4);
+        clip-path: polygon(46% 6%, 78% 12%, 96% 44%, 84% 88%, 38% 100%, 12% 64%);
+      }
+      70%{
+        transform: translate(-50%, -50%) rotate(210deg) scale(.48);
+        clip-path: polygon(48% 12%, 92% 32%, 92% 78%, 54% 96%, 18% 74%, 12% 34%);
+      }
+      92%{ opacity:.85; }
+      100%{
+        opacity:0;
+        transform: translate(-50%, -50%) rotate(330deg) scale(.28);
+        clip-path: polygon(52% 4%, 92% 22%, 100% 60%, 70% 94%, 28% 86%, 6% 48%);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .bg::before,
+      .bg::after,
+      .bg .slice{
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        animation-fill-mode: forwards;
+      }
     }
 
     /* centered jumbotron */
@@ -56,7 +192,6 @@
       width: 100%;
       padding: clamp(1.75rem, 2vw + 1rem, 2.5rem);
       text-align:center;
-      backdrop-filter: blur(3px);
     }
     h1{
       margin:0 0 .35rem;
@@ -92,13 +227,12 @@
       background: #0a0a0a;
       border: 1px solid #004444;
       border-radius: var(--radius);
-      box-shadow: inset 0 0 5px rgba(0,255,255,.1); /* Keeping a subtle inner shadow for depth, but removing outer glow */
-      transition: border-color .2s ease, box-shadow .2s ease;
+      transition: border-color .2s ease;
     }
     .form-group input[type="email"]:focus {
-      outline: none;
+      outline: 2px solid var(--neon-blue);
+      outline-offset: 2px;
       border-color: var(--neon-blue);
-      box-shadow: 0 0 0 1px var(--neon-blue), inset 0 0 5px rgba(0,255,255,.3);
     }
     /* Placeholder color */
     .form-group input[type="email"]::placeholder {
@@ -107,7 +241,6 @@
     }
 
     .cta{
-      --ring: 0 0 0 0 rgba(0,255,255,.55);
       display:inline-flex; align-items:center; justify-content:center;
       gap:.5rem;
       padding:.85rem 1.15rem;
@@ -118,20 +251,19 @@
       border: 1px solid #00b2cc;
       border-radius: var(--radius);
       cursor:pointer;
-      transition: transform .06s ease, box-shadow .12s ease;
+      transition: transform .06s ease, border-color .12s ease;
       /* Removed Initial neon button glow */
       text-decoration:none;
     }
     .cta:hover{
       transform: translateY(-1px);
       /* Removed hover glow */
-      box-shadow: 0 2px 5px rgba(0,0,0,.5); /* Adding a standard shadow for lift effect */
     }
     .cta:active{ transform: translateY(0); }
     .cta:focus-visible{
-      outline:none;
-      /* Replaced glow focus with standard focus ring */
-      box-shadow: 0 0 0 3px rgba(0,255,255,.3);
+      outline: 2px solid var(--neon-blue);
+      outline-offset: 3px;
+      border-color: var(--neon-blue);
     }
 
     /* tiny footer note */
@@ -143,8 +275,10 @@
   </style>
 </head>
 <body>
-  <!-- animated particles background -->
-  <div id="tsparticles" aria-hidden="true"></div>
+  <div class="bg" aria-hidden="true">
+    <span class="slice slice-a"></span>
+    <span class="slice slice-b"></span>
+  </div>
 
   <main class="wrap">
     <section class="card" role="region" aria-label="Coming soon">
@@ -161,60 +295,5 @@
       <div class="foot">Prefer not to email? Drop us a DM on <a href="#">X</a> or <a href="#">LinkedIn</a>.</div>
     </section>
   </main>
-
-  <!-- tsParticles CDN (animated background) - Moved here and removed defer for reliable loading -->
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.9.1/tsparticles.bundle.min.js"></script>
-
-  <script>
-    // Initialize tsParticles immediately after the library loads
-    (async () => {
-      // tsParticles global is provided by the CDN bundle
-      await tsParticles.load({
-        id: "tsparticles",
-        options: {
-          fpsLimit: 60,
-          detectRetina: true,
-          fullScreen: { enable: true, zIndex: 0 },
-          background: { color: "transparent" },
-          particles: {
-            number: { value: 160, density: { enable: true, area: 600 } }, /* Increased density for grid effect */
-            color: { value: "#00ffff" }, /* Neon Blue */
-            shape: {
-              type: "polygon", /* Geometric shape */
-              polygon: { sides: 4 } /* Squares */
-            },
-            opacity: { value: 0.6, animation: { enable: false } }, /* Slightly higher fixed opacity */
-            size:    { value: { min: 0.5, max: 1.5 } }, /* Smaller points */
-            links:   { enable: true, color: "#00ffff", opacity: 0.4, distance: 80, width: 1 }, /* Denser, more visible connections */
-            move:    {
-              enable: true,
-              speed: 0.5, /* Slower movement for intellectual feel */
-              direction: "none",
-              random: false,
-              straight: true,
-              outModes: { default: "bounce" }
-            }
-          },
-          interactivity: {
-            events: {
-              onHover: { enable: true, mode: "repulse" }, /* Techy interaction: repulse */
-              onClick: { enable: true, mode: "push" },
-              resize: true
-            },
-            modes: {
-              repulse: { distance: 100, duration: 0.4 },
-              push: { quantity: 2 }
-            }
-          }
-        }
-      });
-
-      // Respect reduced motion: pause animation if user prefers it
-      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        const container = tsParticles.domItem(0);
-        if (container) container.pause();
-      }
-    })();
-  </script>
 </body>
 </html>
