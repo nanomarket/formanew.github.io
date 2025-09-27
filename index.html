@@ -59,28 +59,42 @@
       left:50%;
       width:8px;
       height:8px;
-      background-color: rgba(0,255,255,.55);
+      background-color: #00FFFF; /* Changed to solid neon blue */
       transform: translate(-50%, -50%);
       box-shadow:
-        /* Original 8 particles */
-        -320px -220px 0 0 rgba(0,255,255,.45),
-        -160px -60px 0 0 rgba(0,255,255,.32),
-        120px -140px 0 0 rgba(255,60,210,.42),
-        280px -20px 0 0 rgba(0,255,255,.38),
-        -260px 180px 0 0 rgba(255,60,210,.4),
-        -20px 220px 0 0 rgba(0,255,255,.34),
-        200px 200px 0 0 rgba(255,60,210,.36),
-        360px 60px 0 0 rgba(0,255,255,.3),
-        /* Added 8 new particles */
-        -400px 0px 0 0 rgba(255,60,210,.35),
-        -100px -300px 0 0 rgba(0,255,255,.4),
-        40px 320px 0 0 rgba(0,255,255,.3),
-        -40px -100px 0 0 rgba(255,60,210,.45),
-        300px -300px 0 0 rgba(0,255,255,.35),
-        -380px 80px 0 0 rgba(0,255,255,.3),
-        180px 380px 0 0 rgba(255,60,210,.4),
-        420px 180px 0 0 rgba(0,255,255,.42);
-      opacity:.55;
+        /* 1: Cyan */
+        -320px -220px 0 0 #00FFFF,
+        /* 2: Magenta */
+        -160px -60px 0 0 #FF3CD2,
+        /* 3: Green */
+        120px -140px 0 0 #39FF14,
+        /* 4: Yellow */
+        280px -20px 0 0 #FFFF00,
+        /* 5: Cyan */
+        -260px 180px 0 0 #00FFFF,
+        /* 6: Magenta */
+        -20px 220px 0 0 #FF3CD2,
+        /* 7: Green */
+        200px 200px 0 0 #39FF14,
+        /* 8: Yellow */
+        360px 60px 0 0 #FFFF00,
+        /* 9: Cyan */
+        -400px 0px 0 0 #00FFFF,
+        /* 10: Magenta */
+        -100px -300px 0 0 #FF3CD2,
+        /* 11: Green */
+        40px 320px 0 0 #39FF14,
+        /* 12: Yellow */
+        -40px -100px 0 0 #FFFF00,
+        /* 13: Cyan */
+        300px -300px 0 0 #00FFFF,
+        /* 14: Magenta */
+        -380px 80px 0 0 #FF3CD2,
+        /* 15: Green */
+        180px 380px 0 0 #39FF14,
+        /* 16: Yellow */
+        420px 180px 0 0 #FFFF00;
+      opacity:1; /* Set to non-transparent */
       animation: nodeDrift 80s linear infinite;
     }
 
