@@ -174,32 +174,32 @@
           fullScreen: { enable: true, zIndex: 0 },
           background: { color: "transparent" },
           particles: {
-            number: { value: 100, density: { enable: true, area: 800 } },
+            number: { value: 160, density: { enable: true, area: 600 } }, /* Increased density for grid effect */
             color: { value: "#00ffff" }, /* Neon Blue */
             shape: {
               type: "polygon", /* Geometric shape */
               polygon: { sides: 4 } /* Squares */
             },
-            opacity: { value: 0.5, animation: { enable: false } }, /* Fixed opacity */
-            size:    { value: { min: 1, max: 2 } }, /* Smaller, fixed size range */
-            links:   { enable: true, color: "#00ffff", opacity: 0.25, distance: 100, width: 1 }, /* Sharper links */
+            opacity: { value: 0.6, animation: { enable: false } }, /* Slightly higher fixed opacity */
+            size:    { value: { min: 0.5, max: 1.5 } }, /* Smaller points */
+            links:   { enable: true, color: "#00ffff", opacity: 0.4, distance: 80, width: 1 }, /* Denser, more visible connections */
             move:    {
               enable: true,
-              speed: 1,
+              speed: 0.5, /* Slower movement for intellectual feel */
               direction: "none",
               random: false,
-              straight: true, /* Straight movement for intellectual feel */
-              outModes: { default: "bounce" } /* Bounce off walls */
+              straight: true,
+              outModes: { default: "bounce" }
             }
           },
           interactivity: {
             events: {
-              onHover: { enable: true, mode: "grab" }, /* Grab mode for connection emphasis */
+              onHover: { enable: true, mode: "repulse" }, /* Techy interaction: repulse */
               onClick: { enable: true, mode: "push" },
               resize: true
             },
             modes: {
-              grab: { distance: 150, links: { opacity: 0.8 } },
+              repulse: { distance: 100, duration: 0.4 },
               push: { quantity: 2 }
             }
           }
