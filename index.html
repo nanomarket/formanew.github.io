@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FormaNew — Coming Soon</title>
 
-  <!-- Roboto Mono (Google Fonts) -->
+  <!-- Inter (Google Fonts) -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Roboto Mono (Google Fonts) - Kept for specific tech elements -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -24,7 +26,7 @@
     html,body{ height:100% }
     body{
       margin:0;
-      font-family:"Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-family:"Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
       color:var(--text);
       background: var(--bg-0); /* Solid black background */
       overflow:hidden;
@@ -45,7 +47,7 @@
       inset:-40vmax;
       pointer-events:none;
       transform-origin:50% 50%;
-      background-image: url("image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNjAnIGhlaWdodD0nMTYwJyB2aWV3Qm94PScwIDAgMTYwIDE2MCc+PHJlY3Qgd2lkdGg9JzE2MCcgaGVpZ2h0PScxNjAnIGZpbGw9J25vbmUnLz48cGF0aCBkPSdNMCAwaDE2MHYxNjBIMHonIGZpbGw9J25vbmUnIHN0cm9rZT0nIzAwZmZmZicgc3Ryb2tlLW9wYWNpdHk9Jy4yNScgc3Ryb2tlLXdpZHRoPScyJy8+PHBhdGggZD0nTTAgODBoMTYwTTgwIDB2MTYwJyBzdHJva2U9JyMwMGZmZmYnIHN0cm9rZS1vcGFjaXR5PScuMTgnIHN0cm9rZS13aWR0aD0nMS41Jy8+PHBhdGggZD0nTTAgMGwxNjAgMTYwTTE2MCAwTDAgMTYwJyBzdHJva2U9JyNmZjNjZDInIHN0cm9rZS1vcGFjaXR5PScuMicgc3Ryb2tlLXdpZHRoPScxLjUnLz48L3N2Zz4=");
+      background-image: url("image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNjAnIGhlaWdodD0nMTYwJyB2aWV3Qm94PScwIDAgMTYwIDE2MCc+PHJlY3Qgd2lkdGg9JzE2MCcgaGVpZ2h0PScxNjAnIGZpbGw9J25vbmUnLz48cGF0aCBkPSdNMCAwaDE2MHYxNjBIMHonIGZpbGw9J25vbmUnIHN0cm9rZT0nIzAwZmZmZicgc3Ryb2tlLW9wYWNpdHk9Jy4yNScgc3Ryb2tlLXdpZHRoPScyJy8+PHBhdGg+nTTAgODBoMTYwTTgwIDB2MTYwJyBzdHJva2U9JyMwMGZmZmYnIHN0cm9rZS1vcGFjaXR5PScuMTgnIHN0cm9rZS13aWR0aD0nMS41Jy8+PHBhdGggZD0nTTAgMGwxNjAgMTYwTTE2MCAwTDAgMTYwJyBzdHJva2U9JyNmZjNjZDInIHN0cm9rZS1vcGFjaXR5PScuMicgc3Ryb2tlLXdpZHRoPScxLjUnLz48L3N2Zz4=");
       background-size: 160px 160px;
       background-repeat: repeat;
       opacity:.32;
@@ -269,7 +271,7 @@
       letter-spacing: .05em; /* Increased letter spacing for tech look */
       color: var(--neon-blue);
       /* Removed text-shadow: 0 0 15px var(--neon-blue), 0 0 5px var(--neon-blue); */
-      font-family: inherit; /* Ensure Roboto Mono is used */
+      font-family: "Inter", sans-serif; /* Use Inter for the main heading */
     }
     p.sub{
       margin:.25rem 0 .5rem;
@@ -307,6 +309,7 @@
       margin-bottom: 0.5rem;
       line-height: 1;
       font-weight: 700;
+      font-family: "Roboto Mono", monospace; /* Keep monospaced for the icon */
     }
 
     .feature-title {
@@ -339,7 +342,7 @@
       width: 100%;
       /* Removed max-width: 300px; */
       padding: 0.85rem 1.15rem;
-      font: 400 0.95rem/1 "Roboto Mono", monospace;
+      font: 400 0.95rem/1 "Inter", sans-serif; /* Use Inter */
       color: var(--text);
       background: #0a0a0a;
       border: 1px solid #004444;
@@ -361,7 +364,7 @@
       display:inline-flex; align-items:center; justify-content:center;
       gap:.5rem;
       padding:.85rem 1.15rem;
-      font: 600 0.95rem/1 "Roboto Mono", monospace;
+      font: 600 0.95rem/1 "Inter", sans-serif; /* Use Inter */
       letter-spacing:.02em;
       color: var(--bg-0);
       background: var(--neon-blue);
