@@ -272,11 +272,55 @@
       font-family: inherit; /* Ensure Roboto Mono is used */
     }
     p.sub{
-      margin:.25rem 0 1.5rem;
+      margin:.25rem 0 .5rem;
       color: var(--muted);
       font-weight: 400;
       font-size: clamp(.95rem, 1.2vw, 1.05rem);
       line-height:1.6;
+    }
+
+    /* Feature Cards Styling */
+    .features {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem; /* Space after sub text */
+      margin-bottom: 2rem; /* Space before the form */
+      text-align: left;
+    }
+    @media (min-width: 600px) {
+      .features {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .feature-item {
+      padding: 1rem;
+      border: 1px solid var(--neon-ghost);
+      border-radius: var(--radius);
+      background: rgba(0, 255, 255, 0.03);
+    }
+
+    .feature-icon {
+      font-size: 1.5rem;
+      color: var(--neon-blue);
+      margin-bottom: 0.5rem;
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .feature-title {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text);
+      margin: 0 0 0.3rem;
+    }
+
+    .feature-description {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.4;
+      margin: 0;
     }
 
     /* Email Form Styling */
@@ -358,6 +402,19 @@
     <section class="card" role="region" aria-label="Coming soon">
       <h1>FormaNew</h1>
       <p class="sub">We’re building a launchpad for Independent IT Contractors. <br/>Stay in the loop — early access soon.</p>
+
+      <div class="features">
+        <div class="feature-item">
+          <div class="feature-icon">&gt;</div>
+          <h3 class="feature-title">Streamlined Incorporation</h3>
+          <p class="feature-description">Take the leap on your idea and turn it into a real business.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&gt;</div>
+          <h3 class="feature-title">Automated Workflows</h3>
+          <p class="feature-description">Roll through common barriers to entry with our integrated business intelligence platform.</p>
+        </div>
+      </div>
 
       <form class="form-group" action="https://formsubmit.co/formanew@proton.me" method="POST"> <!-- Placeholder action -->
         <input type="email" name="email" placeholder="Enter your email address" required aria-label="Email address for waitlist">
