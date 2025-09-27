@@ -166,8 +166,8 @@
       mix-blend-mode:screen;
     }
 
-    .slice-a{ animation:sliceA 90s linear infinite; }
-    .slice-b{ animation:sliceB 110s linear infinite reverse; }
+    .slice-a{ animation:sliceA 54s linear infinite; } /* 90s * 0.6 = 54s */
+    .slice-b{ animation:sliceB 66s linear infinite reverse; } /* 110s * 0.6 = 66s */
 
     .slice-b{
       background-color: rgba(255,60,210,.28);
@@ -183,9 +183,9 @@
     }
 
     @keyframes nodeDrift{
-      0%{ transform: translate(-50%, -50%) rotate(0deg); }
-      50%{ transform: translate(-50%, -50%) rotate(6deg); }
-      100%{ transform: translate(-50%, -50%) rotate(12deg); }
+      0%{ transform: translate(-50%, -50%) translate(0, 0) rotate(0deg); }
+      50%{ transform: translate(-50%, -50%) translate(100px, 150px) rotate(6deg); }
+      100%{ transform: translate(-50%, -50%) translate(200px, 300px) rotate(12deg); }
     }
 
     @keyframes sliceA{
@@ -253,7 +253,7 @@
       padding:4rem 1.25rem;
     }
     .card{
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.75); /* Changed from 0.5 to 0.75 opacity */
       border: 1px solid #004444; /* Sharper border */
       /* Removed box-shadow: 0 0 30px rgba(0,255,255,.15), inset 0 0 0 1px rgba(0,255,255,.05); */
       border-radius: var(--radius);
